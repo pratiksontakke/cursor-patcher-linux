@@ -1,90 +1,41 @@
-# ✅ Fix Guide: Cursor-Free-VIP Storage Path Issue
+# Cursor Setup Guide
 
-## 📌 Problem
+## Installation Steps
 
-The `cursor-free-vip` installer expects the config path to be:
-```
-~/.config/cursor/User/globalStorage/storage.json
-```
-But Cursor (the app) actually creates:
-```
-~/.config/Cursor/User/globalStorage/storage.json
-```
-
-Since Linux is **case-sensitive**, this causes the script to fail or show:
-```
-❌ Config File Not Found
-```
-
----
-
-## ✅ Solution
-
-We will create a symbolic link so that the lowercase path points to the actual config file.
-
----
-
-## 🛠️ Steps
-
-### 1. Ensure Cursor has been opened at least once
-
-This will generate the actual config file:
+### 1. Install Cursor
 ```bash
-~/.config/Cursor/User/globalStorage/storage.json
+./install_cursor.sh
 ```
 
-Run:
+### 2. Uninstall Cursor (if needed)
+```bash
+./uninstall-cursor.sh
+```
+
+### 3. Go Cursor Help
+Visit: https://github.com/yuaotian/go-cursor-help
+
+### 4. Cursor Free VIP
+Visit: https://github.com/yeongpin/cursor-free-vip
+
+## Fix Storage Path Error
+
+If you encounter error while running cursor-free-vip:
+
+### Step 1: Check if config file exists
 ```bash
 ls -l ~/.config/Cursor/User/globalStorage/storage.json
 ```
 
-If file not found, open Cursor once, then recheck.
+Expected Output:
+```bash
+-rw-rw-r-- 1 pratik pratik 2024 Jun 20 14:12 /home/pratik/.config/Cursor/User/globalStorage/storage.json
+```
 
----
-
-### 2. Create the lowercase path and symlink
-
-Run this in your terminal:
-
+### Step 2: Create symlink for lowercase path
 ```bash
 mkdir -p ~/.config/cursor/User/globalStorage
 ln -s ~/.config/Cursor/User/globalStorage/storage.json ~/.config/cursor/User/globalStorage/storage.json
 ```
 
----
-
-### 3. Re-run the activator script
-
-```bash
-./install.sh
-```
-
-You should now see:
-```
-✅ Storage file is valid and contains data
-```
-
----
-
-## ✅ Verify
-
-Check if the symlink was created:
-
-```bash
-ls -l ~/.config/cursor/User/globalStorage/storage.json
-```
-
-Should show something like:
-```bash
-storage.json -> /home/pratik/.config/Cursor/User/globalStorage/storage.json
-```
-
----
-
-## 📦 Why This Works
-
-- Script expects lowercase `.config/cursor/...`
-- Actual config is in `.config/Cursor/...`
-- Symlink bridges the two
-
-This is a 100% working solution.
+Now re-run the cursor-free-vip script and it should work.
