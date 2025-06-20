@@ -2,12 +2,18 @@
 
 ## Installation Steps
 
-### 1. Install Cursor
+### 1. Make scripts executable
+```bash
+chmod +x install_cursor.sh
+chmod +x uninstall-cursor.sh
+```
+
+### 2. Install Cursor
 ```bash
 ./install_cursor.sh
 ```
 
-### 2. Uninstall Cursor (if needed)
+### 3. Uninstall Cursor (if needed)
 ```bash
 ./uninstall-cursor.sh
 ```
