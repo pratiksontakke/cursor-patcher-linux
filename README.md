@@ -40,8 +40,7 @@ Expected Output:
 
 ### Step 2: Create symlink for lowercase path
 ```bash
-mkdir -p ~/.config/cursor/User/globalStorage
-ln -s ~/.config/Cursor/User/globalStorage/storage.json ~/.config/cursor/User/globalStorage/storage.json
+mkdir -p ~/.config/cursor/User/globalStorage && ln -s ~/.config/Cursor/User/globalStorage/storage.json ~/.config/cursor/User/globalStorage/storage.json
 ```
 
 Now re-run the cursor-free-vip script and it should work.
